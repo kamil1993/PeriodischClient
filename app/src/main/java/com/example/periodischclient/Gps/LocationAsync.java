@@ -18,7 +18,7 @@ public class LocationAsync extends AsyncTask<Object,Integer,CostumLocation> {
     @Override
     protected void onPostExecute(CostumLocation result) {
         super.onPostExecute(result);
-        RestManager.postLocation(act,result);
+        RestManager.postLocation(result);
 
     }
 }

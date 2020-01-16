@@ -58,6 +58,7 @@ public class RestManager {
                         trackid = res.trackid;
                         resp = res;
                         Log.e("trackid","\t"+trackid);
+                        Toast.makeText(activity,"the trackid is : "+trackid,Toast.LENGTH_LONG);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -67,15 +68,13 @@ public class RestManager {
             }
 
         });
-
         queue.add(stringRequest);
         return trackid;
     }
 
 
-    public static void postLocation(AppCompatActivity activity, CostumLocation location) {
+    public static void postLocation(CostumLocation location) {
         counter ++;
-        queue = Volley.newRequestQueue(activity.getApplicationContext());
         String url ="http://pi-bo.dd-dns.de:8080/LM-Server/api/v2/data";
         ArrayList<CostumLocation> temp = new ArrayList<>();temp.add(location);
         Gson gson = new Gson();
@@ -91,7 +90,6 @@ public class RestManager {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("Location Fehler", "\t Location könnte nicht gesandt");
-                Toast.makeText(activity.getApplicationContext(), "Location fehlgeschlagen", Toast.LENGTH_LONG);
             }}){
             @Override
             public String getBodyContentType() {
