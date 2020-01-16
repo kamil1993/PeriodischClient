@@ -1,5 +1,6 @@
 package com.example.periodischclient.Rest;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,6 +18,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.periodischclient.BerichtigungsManager;
 import com.example.periodischclient.Gps.CostumLocation;
+import com.example.periodischclient.MainActivity;
+import com.example.periodischclient.R;
 import com.example.periodischclient.Rest.ReqRes.TrackidReq;
 import com.example.periodischclient.Rest.ReqRes.TrackidRes;
 import com.google.gson.Gson;
@@ -30,7 +33,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 public class RestManager {
-
+    public static TextView ausgabe;
     public static int trackid = 0;
     static  TrackidRes resp;
     public static RequestQueue  queue;
@@ -58,13 +61,14 @@ public class RestManager {
                         trackid = res.trackid;
                         resp = res;
                         Log.e("trackid","\t"+trackid);
-                        Toast.makeText(activity,"the trackid is : "+trackid,Toast.LENGTH_LONG);
+                        ausgabe.append("the trackid is : "+trackid+"\n");
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("trackid Fehler", "\t" + trackid);
-                Toast.makeText(activity.getApplicationContext(), "Trackid fehlgeschlagen", Toast.LENGTH_LONG);
+                ausgabe.append("Trackid fehlgeschlagen\n");
+
             }
 
         });
@@ -84,6 +88,7 @@ public class RestManager {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        ausgabe.append("Location gesandtmit Nummer: "+counter+", longitude: "+location.longitude+" lati:"+location.latitude+ "\n");
                         Log.e("Location","\t Location gesandt");
                     }
                 }, new Response.ErrorListener() {

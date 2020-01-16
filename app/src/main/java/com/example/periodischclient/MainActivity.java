@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private LocationManager loc;
     Button startBtn;
     TextView periodenEingabe;
+    TextView ausgabe;
     private FusedLocationProviderClient fusedLocationClient;
 
     @Override
@@ -33,18 +34,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BerichtigungsManager.isLocationGranted(this);
+        RestManager.ausgabe = findViewById(R.id.ausgabe);
+        CostumLocationManager.ausgabe = findViewById(R.id.ausgabe);
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         RestManager.trackidInit(this, "first Test aus Periodischen Client", "Test", 25);
         initGui();
     }
     private void initGui(){
         startBtn = findViewById(R.id.startBtn);
+        ausgabe = findViewById(R.id.ausgabe);
         periodenEingabe = findViewById(R.id.periodenEingabe);
-
-
-
         startBtn.setOnClickListener(x->{
             Long periode = Long.parseLong(periodenEingabe.getText().toString());
+            ausgabe.append("App je : "+periode+ "ms, holt GPS Fix\n");
             Toast.makeText(this.getApplicationContext(),"App je : "+periode+ "ms, holt GPS Fix",Toast.LENGTH_SHORT).show();
             CostumLocationManager.updateLocationPeriod(this,periode);
         });

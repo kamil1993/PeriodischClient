@@ -8,7 +8,9 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
+import android.view.View;
 import android.widget.TabHost;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -22,6 +24,7 @@ import static com.google.android.gms.location.LocationServices.getFusedLocationP
 
 public class CostumLocationManager {
     public static LocationManager locManager;
+    public static TextView ausgabe;
     private static CostumLocation result;
     static AppCompatActivity activityG;
     public static CostumLocation costumLastLocation(AppCompatActivity activity){
