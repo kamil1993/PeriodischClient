@@ -28,21 +28,21 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
 public class RestManager {
 
     public static int trackid = 0;
     static  TrackidRes resp;
+    public static RequestQueue  queue;
     public static int counter = 0;
     public static int trackidInit(AppCompatActivity activity, String beschreibung, String name, int teamid) {
         TrackidReq trackidReq = new TrackidReq();
         trackidReq.teamid=teamid;trackidReq.name=name;trackidReq.beschreibung=beschreibung;
         BerichtigungsManager.isInternetGranted(activity);
-        RequestQueue  queue = Volley.newRequestQueue(activity.getApplicationContext());
+        queue = Volley.newRequestQueue(activity.getApplicationContext());
         String url ="http://pi-bo.dd-dns.de:8080/LM-Server/api/v2/track";
         Gson gson = new Gson();
-        final String json = gson.toJson(trackidReq);
+        String json = gson.toJson(trackidReq);
         JSONObject obj = null;
         try {
             obj = new JSONObject(json);
@@ -75,10 +75,11 @@ public class RestManager {
 
     public static void postLocation(AppCompatActivity activity, CostumLocation location) {
         counter ++;
-        RequestQueue  queue = Volley.newRequestQueue(activity.getApplicationContext());
+        queue = Volley.newRequestQueue(activity.getApplicationContext());
         String url ="http://pi-bo.dd-dns.de:8080/LM-Server/api/v2/data";
+        ArrayList<CostumLocation> temp = new ArrayList<>();temp.add(location);
         Gson gson = new Gson();
-        final String json = "["+locationToJson(location).toString()+"]";
+        String json = gson.toJson(temp);
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -110,23 +111,6 @@ public class RestManager {
         };
 
         queue.add(stringRequest);
-    }
-
-    private static JSONObject  locationToJson(CostumLocation loc){
-        JSONObject obj = new JSONObject();
-        try {
-            obj.put("teamid",loc.teamid);
-            obj.put("latitude",loc.latitude);
-            obj.put("longitude",loc.longitude);
-            obj.put("altitude",loc.altitude);
-            obj.put("timestamp", TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()));
-            obj.put("trackid",loc.trackid);
-            obj.put("session",loc.session);
-            obj.put("counter",counter);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return obj;
     }
 
 }
