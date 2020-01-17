@@ -1,4 +1,4 @@
-package com.example.periodischclient;
+package com.example.periodenclient;
 
 import android.content.Context;
 

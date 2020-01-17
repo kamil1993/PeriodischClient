@@ -1,8 +1,4 @@
-package com.example.periodischclient.Gps;
-
-import android.location.Location;
-
-import java.sql.Timestamp;
+package com.example.periodenclient.Gps;
 
 public class CostumLocation {
     public int teamid;

@@ -1,10 +1,10 @@
-package com.example.periodischclient.Gps;
+package com.example.periodenclient.Gps;
 
 import android.os.AsyncTask;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.periodischclient.Rest.RestManager;
+import com.example.periodenclient.Rest.RestManager;
 
 public class LocationAsync extends AsyncTask<Object,Integer,CostumLocation> {
     CostumLocation loc;

@@ -1,21 +1,16 @@
-package com.example.periodischclient;
+package com.example.periodenclient;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.Looper;
-import android.util.Log;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.periodischclient.Gps.CostumLocationManager;
-import com.example.periodischclient.Rest.RestManager;
+import com.example.periodenclient.Gps.CostumLocationManager;
+import com.example.periodenclient.Rest.RestManager;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 
@@ -43,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private void initGui(){
         startBtn = findViewById(R.id.startBtn);
         ausgabe = findViewById(R.id.ausgabe);
+        ausgabe.setMovementMethod(new ScrollingMovementMethod());
         periodenEingabe = findViewById(R.id.periodenEingabe);
         startBtn.setOnClickListener(x->{
             Long periode = Long.parseLong(periodenEingabe.getText().toString());

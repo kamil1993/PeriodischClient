@@ -1,4 +1,4 @@
-package com.example.periodischclient.Rest.ReqRes;
+package com.example.periodenclient.Rest.ReqRes;
 
 public class TrackidRes {
         public String name;

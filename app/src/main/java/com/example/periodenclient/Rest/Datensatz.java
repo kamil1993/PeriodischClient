@@ -1,6 +1,6 @@
-package com.example.periodischclient.Rest;
+package com.example.periodenclient.Rest;
 
-import com.example.periodischclient.Gps.CostumLocation;
+import com.example.periodenclient.Gps.CostumLocation;
 
 import java.util.ArrayList;
 import java.util.List;

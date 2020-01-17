@@ -1,4 +1,4 @@
-package com.example.periodischclient.Gps;
+package com.example.periodenclient.Gps;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -8,15 +8,12 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
-import android.view.View;
-import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
-import com.example.periodischclient.BerichtigungsManager;
-import com.example.periodischclient.Rest.RestManager;
+import com.example.periodenclient.BerichtigungsManager;
+import com.example.periodenclient.Rest.RestManager;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 import static android.content.Context.LOCATION_SERVICE;

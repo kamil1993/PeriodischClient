@@ -1,31 +1,24 @@
-package com.example.periodischclient.Rest;
+package com.example.periodenclient.Rest;
 import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
-import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.HttpHeaderParser;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.periodischclient.BerichtigungsManager;
-import com.example.periodischclient.Gps.CostumLocation;
-import com.example.periodischclient.MainActivity;
-import com.example.periodischclient.R;
-import com.example.periodischclient.Rest.ReqRes.TrackidReq;
-import com.example.periodischclient.Rest.ReqRes.TrackidRes;
+import com.example.periodenclient.BerichtigungsManager;
+import com.example.periodenclient.Gps.CostumLocation;
+import com.example.periodenclient.Rest.ReqRes.TrackidReq;
+import com.example.periodenclient.Rest.ReqRes.TrackidRes;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
